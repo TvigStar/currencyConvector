@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 
 export const CurrencyConvector = (props) => {
     const {selectOption, setSelectOption} = props
-    const [secondBase, setSecondBase] = useState('')
+    const [newBase, setNewBase] = useState('')
     const [input, setInput] = useState({firstValue: 1, secondValue: 1})
 
     const selectHandle = (e) =>  {
@@ -15,29 +15,29 @@ export const CurrencyConvector = (props) => {
             rates
         })
         setInput({firstValue: input.firstValue,
-            secondValue: (input.firstValue * rates[secondBase]).toFixed(4)})
+            secondValue: (input.firstValue * rates[newBase]).toFixed(4)})
     }
 
     const secondSelectHandle = (value) => {
-       setSecondBase(value)
+       setNewBase(value)
         setInput({firstValue: (input.secondValue / selectOption.rates[value]).toFixed(4),
             secondValue: input.secondValue})
     }
 
     const inputHandler = (value) => {
         setInput({firstValue: value,
-            secondValue: (value * selectOption.rates[secondBase]).toFixed(4)})
+            secondValue: (value * selectOption.rates[newBase]).toFixed(4)})
     }
 
     const secondInputHandler = (value) => {
-        setInput({firstValue: (value / selectOption.rates[secondBase]).toFixed(4),
+        setInput({firstValue: (value / selectOption.rates[newBase]).toFixed(4),
         secondValue: value})
     }
 
     useEffect(() => {
-        if (!secondBase){
+        if (!newBase){
             console.log(selectOption.base)
-            setSecondBase(selectOption.base)
+            setNewBase(selectOption.base)
         }
     }, [selectOption])
 
@@ -76,7 +76,7 @@ export const CurrencyConvector = (props) => {
                     onChange={(e) => secondInputHandler(+e.target.value)}/>
                 <select
                     className='form'
-                    value={secondBase}
+                    value={newBase}
                     onChange={(e) => secondSelectHandle(e.target.value)}>
                     {Object.keys(selectOption.rates).map(option =>
                         <option value={option} key={option}> {option}</option>
