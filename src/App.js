@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {CurrencyConvector} from "./components";
+import {useEffect, useState} from "react";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const currencies = ['USD', 'UAH', 'EUR']
+    const [selectOption, setSelectOption] = useState({})
+
+    // console.log(selectOption)
+    useEffect(() => {
+            fetch('https://api.exchangerate.host/latest',
+                {
+                    method: "GET",
+                    mode: 'cors'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setSelectOption({
+                        base: data.base,
+                        rates: Object.keys(data.rates).reduce((result, key) => {
+                            if (currencies.includes(key)) {
+                                return {...result, [key]: data.rates[key]}
+                            }
+                            return result
+                        }, {})
+                    })
+                })
+        }
+        , []
+    )
+    return (
+        <div>
+            <CurrencyConvector selectOption={selectOption} setSelectOption={setSelectOption}/>
+        </div>
+    );
 }
 
 export default App;
