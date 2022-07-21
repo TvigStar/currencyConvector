@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container{
+  background-color: #170d1f;
+  width: 100%;
+  height:100vh;
+  position: relative;
+}
+
+.main{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.txt_currency{
+  font-family: 'Itim', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 60px;
+
+  color: #FFFFFF;
+}
+
+.block_input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+.inputs{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.form {
+  padding: 10px;
+  font-size: 18px;
+  outline:none;
+  background: linear-gradient(to left top, #000, #22132e) fixed;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  transition: all 0.5s;
+}
+
+.form:hover {
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.form:focus {
+  border: 2px solid rgba(255,255,255,0.5);
+  background: linear-gradient(to left top, #000, #4e2d69) fixed;
+}

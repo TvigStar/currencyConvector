@@ -30,7 +30,7 @@ function App() {
         , []
     )
     return (
-        <div>
+        <div className='container'>
             <CurrencyConvector selectOption={selectOption} setSelectOption={setSelectOption}/>
         </div>
     );

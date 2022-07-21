@@ -51,12 +51,16 @@ export const CurrencyConvector = (props) => {
 
 
     return (
-        <div>
-            <div>
+        <div className='main'>
+            <span className='txt_currency'> Currency Convector</span>
+            <div className='block_input'>
+            <div className='inputs'>
                 <input
+                    className='form'
                     value={input.firstValue}
                     onChange={(e) => inputHandler(+e.target.value)} />
                 <select
+                    className='form'
                     value={selectOption.base}
                     onChange={selectHandle}>
                     {Object.keys(selectOption.rates).map(option =>
@@ -65,17 +69,20 @@ export const CurrencyConvector = (props) => {
                 </select>
             </div>
             <br></br>
-            <div>
+            <div className='inputs'>
                 <input
+                    className='form'
                     value={input.secondValue}
                     onChange={(e) => secondInputHandler(+e.target.value)}/>
                 <select
+                    className='form'
                     value={secondBase}
                     onChange={(e) => secondSelectHandle(e.target.value)}>
                     {Object.keys(selectOption.rates).map(option =>
                         <option value={option} key={option}> {option}</option>
                     )}
                 </select>
+            </div>
             </div>
         </div>
     )
