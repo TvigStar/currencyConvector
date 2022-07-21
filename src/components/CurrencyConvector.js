@@ -43,8 +43,17 @@ export const CurrencyConvector = (props) => {
 
     if (Object.keys(selectOption).length === 0) {
         return (
-            <div>
-                <h1> loading</h1>
+            <div className='load_block'>
+                <div className="lds-roller">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
         )
     }
